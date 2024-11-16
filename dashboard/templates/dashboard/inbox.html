@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../static/dashboard/styles.css">
+</head>
+<body>
+    <div class="container">
+      <h1>Project Management App</h1>
+        {% block content %}
+        <h2>Your Inbox</h2>
+        <ul>
+          {% for message in messages %}
+            <li>
+              <strong>{{ message.subject }}</strong><br>
+              From: {{ message.sender }}<br>
+              Sent: {{ message.timestamp }}<br>
+              <p>{{ message.body }}</p>
+              
+              <form method="POST" action="{% url 'delete_message' message.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+              
+            </li>
+          {% empty %}
+            <p>No messages yet.</p>
+          {% endfor %}
+        </ul>
+      {% endblock %}
+            <a href="{% url 'send_message' %}">Send Message</a>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+    </div>
+</body>
+</html>
