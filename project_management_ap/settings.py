@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'project_management_ap.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'project_management_db',  # Your DB name
-        'USER': 'pm_admin',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('DB_NAME', 'module_5_db_lspd'), 
+        'USER': os.environ.get('DB_USER', 'module_5_db_lspd_user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'TsMXa8axt98E7FB3DfpTo61vWpzXNIlx'),
+        'HOST': os.environ.get('DB_HOST', 'dpg-csseo38gph6c73956800-a.oregon-postgres.render.com'),  
+        'PORT': os.environ.get('DB_PORT', '5432'),  
     }
 }
 
