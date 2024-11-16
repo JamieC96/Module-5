@@ -115,3 +115,4 @@ websocket-client==1.8.0
 Werkzeug==3.0.3
 whitenoise==6.8.2
 widgetsnbextension==4.0.10
+cryptography==41.0.3
